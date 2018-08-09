@@ -28,6 +28,13 @@ import isPlainObject from './utils/isPlainObject'
  * @returns {Store} A Redux store that lets you read the state, dispatch actions
  * and subscribe to changes.
  */
+
+/**
+note: since every createStore return an object, there are two ways to hold this object for later manipulating：
+- use class to construct a store object each time calling createStore
+- each time calling createStore there is an Obeject created & methods manipulating this object been defined & return
+the second way is very clever，which using closure & js garbage collection
+*/
 export default function createStore(reducer, preloadedState, enhancer) {
   if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
     enhancer = preloadedState
